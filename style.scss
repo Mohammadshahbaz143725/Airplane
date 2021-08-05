@@ -1,0 +1,320 @@
+
+*{    margin: 0;padding: 0;box-sizing: border-box;    }
+
+
+$sky:#1185bb;
+$grass:#047404;
+
+@mixin tire
+{
+    height: 50px;
+    width: 20px;
+    background: #000;
+    display: block;
+    border-radius: 20px;
+}
+
+.airplane
+{
+    position: relative;
+    .sky
+    {
+        height: 30vh;
+        width: 100vw;
+        background: $sky;
+    }
+    .grass
+    {
+        height: 70vh;
+        width: 100vw;
+        background: $grass;
+        position: relative;
+
+        &::after
+        {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #707070;
+            clip-path: polygon(50% 0%, 100% 17%, 100% 100%, 0 100%, 0 18%);
+
+
+        }
+        
+        /* border-right: 200px solid transparent;
+        border-bottom: 435px solid #707070;
+        border-left: 200px solid transparent; */
+
+        
+        
+    }
+    .planebody
+    {
+       
+       position: absolute;
+       top: 40%;
+       left: 48%;
+       transform: translate(-50%,-50%);
+   
+        .plane_face
+        {
+            height:200px;
+            width: 200px;
+            border-radius: 49%;
+            background: #ffffff;
+           /*  box-shadow: inset -10px -10px 20px #575757,
+                        inset 10px 10px 20px #646464; */
+            box-shadow: inset -6px -7px 21px 5px rgba(61,61,61,0.4),
+                        inset 6px 7px 21px 5px rgba(131, 131, 131, 0.4);
+            position: relative;
+
+
+            
+            &::before
+            {
+                content: "";
+                position: absolute;
+                clip-path: polygon(50% 0%, 41% 100%, 58% 100%);
+                height: 250px;
+                width: 150px;
+                background: #ffffff;
+                position: absolute;
+                top: -150px;
+                right: 10%;
+                z-index: -1;
+            }
+
+            .glass
+            {
+                height: 40px;
+                width: 100px;
+                background: #0d2e58;
+                position: absolute;
+                left: 50%;
+                top: 30%;
+                transform: translate(-50%,-50%);
+                clip-path: polygon(23% 0, 75% 0, 95% 56%, 4% 56%);
+
+            }       
+
+        }
+        .wing-right
+        {
+            clip-path: polygon(100% 49%, 0 47%, 0 69%);
+            height: 100px;
+            width: 500px;
+            background: #fff;
+            position: absolute;
+            top: 40px;
+            left: 190px;
+            transform: rotate(-2deg);
+            z-index: -1;
+
+        }
+        .wing-left
+        {
+            clip-path: polygon(100% 42%, 100% 69%, 0 69%);
+            height: 100px;
+            width: 500px;
+            background: #fff;
+            position: absolute;
+            top: 40px;
+            right: 100px;
+            transform: rotate(2deg);
+            z-index: -1;
+
+        }
+        .short-right-wing
+        {
+            clip-path: polygon(100% 49%, 0 47%, 0 69%);
+            height: 100px;
+            width: 250px;
+            background: #fff;
+            position: absolute;
+            top:-20px;
+            left: 180px;
+            transform: rotate(-5deg);
+            z-index: -1;
+        }
+        .short-left-wing
+        {
+            clip-path: polygon(100% 42%, 100% 69%, 0 69%);
+            height: 100px;
+            width: 250px;
+            background: #fff;
+            position: absolute;
+            top: -20px;
+            right: 150px;
+            transform: rotate(5deg);
+            z-index: -1;
+
+          
+
+        }
+        .engine-left , .engine-right
+        {
+            height: 100px;
+            width: 100px;
+            background: #474747;
+            border: 5px solid #fff;
+            border-radius: 50%;
+            position: relative;
+
+            &::before
+            {
+                content:"";
+                position: absolute;
+                height: 10px;
+                width: 5px;
+                background: #fff;
+                top: -12px;
+                left: 50%;
+
+            }
+        }
+        .engine-left
+        {
+            position: absolute;
+            bottom: -15px;
+            left: -200px;
+        }
+        .engine-right
+        {
+            position: absolute;
+            bottom: -12px;
+            right: -210px;
+        }
+        .tire-stand
+        {
+            height: 100px;
+            width: 10px;
+            background: #fff;
+            border-radius: 20px;
+            position: absolute;
+            bottom: 0;
+            left: -30%;
+            opacity: 0.8;
+            z-index: -1;
+
+            &::before
+            {
+                content: "";
+                height: 100px;
+                width: 10px;
+                background: #ffffff;
+                border-radius: 20px;
+                position: absolute;
+                bottom: 0;
+                right: -300px;
+                opacity: 0.8;
+                z-index: -1;
+
+            }
+            &::after
+            {
+                content: "";
+                height: 100px;
+                width: 10px;
+                background: #fff;
+                border-radius: 20px;
+                position: absolute;
+                bottom: -90px;
+                right: -150px;
+                opacity: 0.8;
+
+            }
+
+            .tire1
+            {
+                @include tire();
+                position: absolute;
+                bottom: -20px;
+                right: -20px;
+
+                &::before
+                {
+                    content: "";
+                   @include tire();
+                    position: absolute;
+                    bottom: 0;
+                    left: -30px;
+
+                }
+            }
+            .tire2
+            {
+                @include tire();
+                position: absolute;
+                bottom: -100px;
+                right: -170px;
+
+                &::before
+                {
+                    content: "";
+                   @include tire();
+                    position: absolute;
+                    bottom: 0;
+                    left: -30px;
+
+                }
+            } 
+            .tire3
+            {
+                @include tire();
+                position: absolute;
+                bottom: -20px;
+                right: -320px;
+
+                &::before
+                {
+                    content: "";
+                   @include tire();
+                    position: absolute;
+                    bottom: 0;
+                    left: -30px;
+
+                }
+            }
+        }
+    }       //plane body
+}
+
+@media all and (max-width:740px)
+{
+    body
+    {
+        overflow: hidden;
+    }
+.airplane
+{
+    position: relative;
+    min-height: 100vh;
+    .sky
+    {
+        height: 35vh;
+        width: 100%;
+    }
+    .grass
+    {
+        height: 60vh;
+        width: 100%;
+        border-right: 100px solid transparent;
+        border-bottom: 400px solid #333;
+        border-left: 50px solid transparent;
+
+        
+        
+    }.planebody
+    {
+        height:200px;
+        width: 20%;
+       position: absolute;
+       top: 60%;
+       left: 35%;
+       transform: translate(-50%,-50%);
+
+        
+    }
+}
+}
